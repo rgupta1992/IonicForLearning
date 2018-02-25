@@ -8,8 +8,25 @@
 </ion-header>
 
 <ion-content padding>  
-  <div  class="topButtons">
+  <div  >
     <button ion-button block (click) = "login()">Login</button>
     <button ion-button block (click) = "register()">Register</button>
+    <button ion-button block (click) = "loginWithFacebook()" *ngIf="!facebook.loggedIn">Login With Facebook</button>
+    
+    <ion-card *ngIf="facebook.loggedIn">
+      <img src="{{ facebook.profilePicture }}"/>
+      <ion-card-content>
+        <ion-card-title>
+          {{ facebook.name }}
+          </ion-card-title>
+        <p style="text-align : center;">
+          {{ facebook.email }}
+        </p>
+      </ion-card-content>
+    </ion-card>
+    
+
+    <button ion-button block (click) = "logoutFromFacebook()" *ngIf="facebook.loggedIn">Logout from Facebook</button>
+
   </div>
 </ion-content>
